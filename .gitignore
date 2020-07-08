@@ -15,3 +15,5 @@ logs/
 celerybeat-schedule                                                                     
 .ipynb_checkpoints
 env/
+local_settings.py
+prod_settings.py
