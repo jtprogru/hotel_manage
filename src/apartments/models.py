@@ -52,7 +52,7 @@ class Apartment(models.Model):
     floor = models.PositiveSmallIntegerField(verbose_name="Этаж")
     description = models.CharField(verbose_name="Описание", max_length=500)
     id_clients = models.ForeignKey('Client', on_delete=models.DO_NOTHING)
-    id_orders = models.ForeignKey
+    id_orders = models.ForeignKey('Order', on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return f'{self.name} - {self.apartment_type}'
@@ -91,7 +91,7 @@ class Client(models.Model):
 class Passport(models.Model):
     """
     Модель паспорта клиента
-    
+
     id
     serial
     number
