@@ -10,6 +10,6 @@ class PassportCreationForm(forms.ModelForm):
         fields = ["serial", "number", "police_department", "police_department_id",
                   "date_issue", "sex", "birth_date", "birth_place", "registration"]
 
-    def date_of_birth(self):
-        return self.birth_date
+    # def date_of_birth(self):
+    #     return self.birth_date
 
