@@ -1,24 +1,27 @@
-Это чистый шаблон Django проекта, с которым можно быстро начать разработку. В шаблон входит конфиг Systemd, nginx, gunicorn.
+# Hotel Manage
 
-Установка представляет собой просто указание Python интерпретатора и названия домена, запустите:
+Проект на коленке для управления гостиницей/отелем. Написан на `Python 3.8` 
 
-```bash
-./install.sh
+Весь основной код расположен в директории `src`. Там же размещен файл `manage.py` для управления `Django`.
+
+За основу взят template-репозиторий [django-clean-template](https://github.com/jtprog/django-clean-template).
+
+Процедура разворачивания стандартная.
+
+Подготовить виртуальное окружение:
+```shell script
+python -m venv venv
+``` 
+
+Активировать виртуальное окружение:
+```shell script
+source venv/bin/activate
 ```
 
-В конфиге Django заполните настройки базы данных (`src/config/settings.py`).
-
-Посмотреть статус gunicorn демона:
-
-```bash
-sudo systemctl status gunicorn
+Установить зависимости:
+```shell script
+python -m pip install --upgrade pip setuptools wheels
+python -m pip install -r requirements.txt
 ```
 
-Логи gunicorn'а лежат в `gunicorn/access.log` и `gunicorn/error.log`.
-
-После изменения systemd конфига надо перечитать его и затем перезапустить юнит:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl restart gunicorn
-```
+Открыть в PyCharm и начать работать.
