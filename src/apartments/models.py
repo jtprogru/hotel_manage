@@ -43,16 +43,14 @@ class Apartment(models.Model):
                               max_length=25,
                               choices=APARTMENT_STATUS_CHOICES,
                               default=AP_STATUS_FREE)
-    day_price = models.DecimalField(verbose_name="Стоимость за сутки", decimal_places=8, max_digits=12)
-    night_price = models.DecimalField(verbose_name="Стоимость за ночь", decimal_places=8, max_digits=12)
+    day_price = models.IntegerField(verbose_name="Стоимость за сутки")
+    night_price = models.IntegerField(verbose_name="Стоимость за ночь")
     apartment_type = models.CharField(verbose_name="Тип",
                                       max_length=25,
                                       choices=APARTMENT_TYPE_CHOICES,
                                       default=AP_TYPE_STANDART)
     floor = models.PositiveSmallIntegerField(verbose_name="Этаж")
     description = models.CharField(verbose_name="Описание", max_length=500)
-    id_clients = models.ForeignKey(to='clients.Client', on_delete=models.DO_NOTHING, null=True)
-    id_orders = models.ForeignKey(to='orders.Order', on_delete=models.DO_NOTHING, null=True)
 
     def __str__(self):
         return f'Номер: {self.name} :  Тип номера: {self.get_apartment_type()} - Статуст: {self.get_apartment_status()}'
