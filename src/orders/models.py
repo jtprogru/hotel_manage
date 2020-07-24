@@ -40,6 +40,8 @@ class Order(models.Model):
     date_start = models.DateField(verbose_name="Дата открытия заказа")
     date_end = models.DateField(verbose_name="Дата закрытия заказа", null=True)
     timestamp = models.DateTimeField(verbose_name="Таймштамп", auto_now_add=True)
+    id_client = models.ForeignKey(to='clients.Client', on_delete=models.DO_NOTHING, null=True)
+    id_apartment = models.ForeignKey(to='apartments.Apartment', on_delete=models.DO_NOTHING, null=True)
 
     def __str__(self):
         return f'Заказ от: {self.date_start} - {self.get_status()} - {self.get_type()}'
@@ -62,3 +64,7 @@ class Order(models.Model):
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
         db_table = "orders"
+
+
+class Orders(models.Model):
+    pass

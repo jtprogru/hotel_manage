@@ -18,7 +18,7 @@ class Client(models.Model):
     second_name = models.CharField(verbose_name="Фамилия", max_length=64)
     status = models.CharField(verbose_name="Статус", max_length=64)
     is_vip = models.BooleanField(verbose_name="VIP-статус", default=False)
-    id_passports = models.OneToOneField('Passport', on_delete=models.CASCADE)
+    id_passport = models.OneToOneField('Passport', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.second_name} {self.first_name} {self.middle_name}'
