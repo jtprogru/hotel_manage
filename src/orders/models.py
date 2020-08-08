@@ -3,7 +3,7 @@ from django.db import models
 
 class Order(models.Model):
     """
-    Модель заказов
+    Модель заказа
     :param int id: - Уникальный ID в рамках таблицы
     :param str status: - Статус заказа
     :param str type: - Тип заказа - Бронь/Отказ/Заселение/Выселение
@@ -47,17 +47,21 @@ class Order(models.Model):
         return f'Заказ от: {self.date_start} - {self.get_status()} - {self.get_type()}'
 
     def get_status(self):
+        """Функция возвращает статус заказа"""
         return 'Открыт' if self.status == 'open' else 'Закрыт'
 
     def get_type(self):
+        """Функция позвращает тип заказа"""
         if self.type == 'booked':
             t = 'Забронировано'
         elif self.type == 'revoked':
             t = 'Отказ'
         elif self.type == 'checkin':
             t = 'Заселение'
-        else:
+        elif self.type == 'eviction':
             t = 'Выселение'
+        else:
+            t = None
         return t
 
     class Meta:
@@ -65,6 +69,3 @@ class Order(models.Model):
         verbose_name_plural = "Заказы"
         db_table = "orders"
 
-
-class Orders(models.Model):
-    pass
