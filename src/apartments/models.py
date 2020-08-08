@@ -12,8 +12,6 @@ class Apartment(models.Model):
     :param str apartment_type - Люкс/Полу-люкс/Стандарт/Эконом/Для молодожен;
     :param int floor - Этаж
     :param str description - Описание норме
-    :param int id_clients - Ссылка на клиена
-    :param int id_orders - Ссылка на заказ
     """
     AP_STATUS_FREE = 'free'
     AP_STATUS_BUSY = 'busy'
@@ -38,7 +36,7 @@ class Apartment(models.Model):
         (AP_TYPE_MARRIED, 'Для молодожен'),
     ]
 
-    name = models.PositiveSmallIntegerField(verbose_name="Номер апартамента")
+    name = models.PositiveSmallIntegerField(verbose_name="Номер апартамента", unique=True)
     status = models.CharField(verbose_name="Статус",
                               max_length=25,
                               choices=APARTMENT_STATUS_CHOICES,
