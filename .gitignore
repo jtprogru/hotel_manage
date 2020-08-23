@@ -17,3 +17,5 @@ celerybeat-schedule
 env/
 local_settings.py
 prod_settings.py
+src/static/
+src/media/
