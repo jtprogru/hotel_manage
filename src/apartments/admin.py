@@ -3,12 +3,17 @@ from django.contrib import admin
 from .models import Apartment
 
 
-class ApartmentAdmin(admin.ModelAdmin):
+class ApartmentInline(admin.StackedInline):
+    model = Apartment
+    extra = 1
+
+
+class ApartmentAdmin(ApartmentInline):
     """Номера"""
     list_display = ("name", "status", "day_price", "night_price", "apartment_type", "floor", "description")
     list_filter = ("status", "apartment_type")
     search_fields = ("status", "apartment_type")
-    inlines = ['ClientInline']
+    inlines = ['ApartmentInline']
     fieldsets = (
         (None, {
             "fields": ("floor", ("name", "status"))
@@ -23,4 +28,3 @@ class ApartmentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Apartment)
-

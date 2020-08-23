@@ -11,7 +11,7 @@ class Apartment(models.Model):
     :param float night_price - Стоимость за ночь
     :param str apartment_type - Люкс/Полу-люкс/Стандарт/Эконом/Для молодожен;
     :param int floor - Этаж
-    :param str description - Описание норме
+    :param str description - Описание номера
     """
     AP_STATUS_FREE = 'free'
     AP_STATUS_BUSY = 'busy'
@@ -47,7 +47,6 @@ class Apartment(models.Model):
                                       max_length=25,
                                       choices=APARTMENT_TYPE_CHOICES,
                                       default=AP_TYPE_STANDART)
-    floor = models.PositiveSmallIntegerField(verbose_name="Этаж")
     description = models.CharField(verbose_name="Описание", max_length=500)
 
     def __str__(self):
