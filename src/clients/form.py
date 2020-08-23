@@ -12,4 +12,3 @@ class PassportCreationForm(forms.ModelForm):
 
     # def date_of_birth(self):
     #     return self.birth_date
-

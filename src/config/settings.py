@@ -92,6 +92,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 try:
-    import config.local_settings
+    from config.local_settings import *
 except ImportError:
-    import config.prod_settings
+    pass
+
+try:
+    from config.prod_settings import *
+except ImportError:
+    pass
