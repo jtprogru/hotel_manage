@@ -16,4 +16,4 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ("status", "date_start", "date_end", "timestamp", "id_client", "id_apartment")
