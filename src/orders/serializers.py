@@ -4,7 +4,7 @@ from .models import Order
 
 
 class OrderListSerializer(serializers.ModelSerializer):
-    """Список клиентов"""
+    """Список заказов"""
 
     class Meta:
         model = Order
@@ -12,7 +12,7 @@ class OrderListSerializer(serializers.ModelSerializer):
 
 
 class OrderDetailSerializer(serializers.ModelSerializer):
-    """Подробный вывод по одному заказу"""
+    """Детальный вывод по одному заказу"""
     # TODO Понять почему не работает так как должно работать :|
     # id_client = serializers.SlugRelatedField(slug_field="full_name", read_only=True)
     # id_apartment = serializers.SlugRelatedField(slug_field="name", read_only=True)

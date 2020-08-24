@@ -12,7 +12,7 @@ class ClientListSerializer(serializers.ModelSerializer):
 
 
 class ClientDetailSerializer(serializers.ModelSerializer):
-    """Подробный вывод по одному клиенту"""
+    """Детальный вывод по одному клиенту"""
 
     class Meta:
         model = Client

@@ -6,7 +6,7 @@ from .serializers import OrderListSerializer, OrderDetailSerializer
 
 
 class OrderListView(APIView):
-    """Вывод списка клиентов"""
+    """Вывод списка заказов"""
     def get(self, request):
         orders = Order.objects.all()
         serializer = OrderListSerializer(orders, many=True)
@@ -14,8 +14,21 @@ class OrderListView(APIView):
 
 
 class OrderDetailView(APIView):
-    """Вывод списка клиентов"""
+    """Детальный вывод по одному номеру"""
     def get(self, request, pk):
+        """Получение одной записи по ID"""
         order = Order.objects.get(id=pk)
         serializer = OrderDetailSerializer(order)
         return Response(serializer.data)
+
+    def post(self, request, pk):
+        """Создание одной записи по ID"""
+        pass
+
+    def put(self, request, pk):
+        """Обновление одной записи в БД по ID"""
+        pass
+
+    def delete(self, request, pk):
+        """Удаление одной записи из БД по ID"""
+        pass

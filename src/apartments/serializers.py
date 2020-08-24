@@ -12,7 +12,7 @@ class ApartmentListSerializer(serializers.ModelSerializer):
 
 
 class ApartmentDetailSerializer(serializers.ModelSerializer):
-    """Список номеров"""
+    """Детальный вывод по одному номеру"""
 
     class Meta:
         model = Apartment
