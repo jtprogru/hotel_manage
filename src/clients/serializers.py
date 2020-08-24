@@ -16,5 +16,4 @@ class ClientDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Client
-        fields = ("full_name", "is_vip", "passport_sn", "police_department", "police_department_id", "date_issue",
-                  "sex", "birth_date", "birth_place", "registration")
+        fields = '__all__'
