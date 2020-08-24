@@ -1,0 +1,8 @@
+from django.urls import path
+
+from . import views
+
+
+urlpatterns = [
+    path("apartment/", views.ApartmentListView.as_view()),
+]
