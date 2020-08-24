@@ -51,6 +51,9 @@ class Client(models.Model):
     def __str__(self):
         return f'{self.second_name} {self.first_name} {self.middle_name}'
 
+    def full_name(self):
+        return self.__str__()
+
     class Meta:
         verbose_name = "Клиент"
         verbose_name_plural = "Клиенты"
