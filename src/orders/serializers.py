@@ -12,7 +12,10 @@ class OrderListSerializer(serializers.ModelSerializer):
 
 
 class OrderDetailSerializer(serializers.ModelSerializer):
-    """Подробный вывод по одному клиенту"""
+    """Подробный вывод по одному заказу"""
+    # TODO Понять почему не работает так как должно работать :|
+    # id_client = serializers.SlugRelatedField(slug_field="full_name", read_only=True)
+    # id_apartment = serializers.SlugRelatedField(slug_field="name", read_only=True)
 
     class Meta:
         model = Order
