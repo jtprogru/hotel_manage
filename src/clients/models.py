@@ -54,6 +54,9 @@ class Client(models.Model):
     def full_name(self):
         return self.__str__()
 
+    def passport_sn(self):
+        return f'{self.serial} {self.number}'
+
     class Meta:
         verbose_name = "Клиент"
         verbose_name_plural = "Клиенты"
