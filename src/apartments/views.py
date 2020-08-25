@@ -22,14 +22,14 @@ class ApartmentDetailView(APIView):
         serializer = ApartmentDetailSerializer(apartment)
         return Response(serializer.data)
 
-    def post(self, request, pk):
-        """Создание одной записи по ID"""
-        pass
-
-    def put(self, request, pk):
-        """Обновление одной записи в БД по ID"""
-        pass
-
-    def delete(self, request, pk):
-        """Удаление одной записи из БД по ID"""
-        pass
+    # def post(self, request, pk):
+    #     """Создание одной записи по ID"""
+    #     pass
+    #
+    # def put(self, request, pk):
+    #     """Обновление одной записи в БД по ID"""
+    #     pass
+    #
+    # def delete(self, request, pk):
+    #     """Удаление одной записи из БД по ID"""
+    #     pass

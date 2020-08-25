@@ -21,14 +21,20 @@ class OrderDetailView(APIView):
         serializer = OrderDetailSerializer(order)
         return Response(serializer.data)
 
-    def post(self, request, pk):
-        """Создание одной записи по ID"""
-        pass
-
-    def put(self, request, pk):
-        """Обновление одной записи в БД по ID"""
-        pass
-
-    def delete(self, request, pk):
-        """Удаление одной записи из БД по ID"""
-        pass
+    # def post(self, request, pk):
+    #     """Создание одной записи по ID"""
+    #     order = Order.objects.get_or_create(id=pk)
+    #     serializer = OrderDetailSerializer(order)
+    #     return Response(serializer.data)
+    #
+    # def put(self, request, pk):
+    #     """Обновление одной записи в БД по ID"""
+    #     order = Order.objects.get(id=pk)
+    #     serializer = OrderDetailSerializer(order)
+    #     return Response(serializer.data)
+    #
+    # def delete(self, request, pk):
+    #     """Удаление одной записи из БД по ID"""
+    #     order = Order.objects.get(id=pk)
+    #     serializer = OrderDetailSerializer(order)
+    #     return Response(serializer.data)
