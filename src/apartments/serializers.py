@@ -17,3 +17,11 @@ class ApartmentDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Apartment
         fields = '__all__'
+
+
+class ApartmentCreateSerializer(serializers.ModelSerializer):
+    """Детальный вывод по одному номеру"""
+
+    class Meta:
+        model = Apartment
+        fields = '__all__'

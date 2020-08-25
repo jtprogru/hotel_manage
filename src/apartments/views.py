@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Apartment
-from .serializers import ApartmentListSerializer, ApartmentDetailSerializer
+from .serializers import ApartmentListSerializer, ApartmentDetailSerializer, ApartmentCreateSerializer
 
 
 class ApartmentListView(APIView):
@@ -22,9 +22,16 @@ class ApartmentDetailView(APIView):
         serializer = ApartmentDetailSerializer(apartment)
         return Response(serializer.data)
 
-    # def post(self, request, pk):
-    #     """Создание одной записи по ID"""
-    #     pass
+
+class ApartmentCreateView(APIView):
+    """Создание номера"""
+    def post(self, request):
+        """Создание одной записи по ID"""
+        apartment = ApartmentCreateSerializer(data=request.data)
+        if apartment.is_valid():
+            apartment.save()
+        return Response(status=201)
+
     #
     # def put(self, request, pk):
     #     """Обновление одной записи в БД по ID"""
