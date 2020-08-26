@@ -1,31 +1,42 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from django.views.generic.base import View
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .models import Apartment
+from .serializers import ApartmentListSerializer, ApartmentDetailSerializer, ApartmentCreateSerializer
 
 
-def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
+class ApartmentListView(APIView):
+    """Вывод списка номеров"""
+    def get(self, request):
+        """Получение списка записей"""
+        apartmetns = Apartment.objects.all()
+        serializer = ApartmentListSerializer(apartmetns, many=True)
+        return Response(serializer.data)
 
 
-class ApartmentView(View):
-    """Список номеров"""
-    model = Apartment
-    queryset = Apartment.objects.all()
+class ApartmentDetailView(APIView):
+    """Детальный вывод по одному номеру"""
+    def get(self, request, pk):
+        """Получение одной записи по ID"""
+        apartment = Apartment.objects.get(id=pk)
+        serializer = ApartmentDetailSerializer(apartment)
+        return Response(serializer.data)
 
 
-class AddApartment(View):
-    pass
+class ApartmentCreateView(APIView):
+    """Создание номера"""
+    def post(self, request):
+        """Создание одной записи по ID"""
+        apartment = ApartmentCreateSerializer(data=request.data)
+        if apartment.is_valid():
+            apartment.save()
+        return Response(status=201)
 
-
-class ClientView(View):
-    pass
-
-
-class PassportView(View):
-    pass
+    #
+    # def put(self, request, pk):
+    #     """Обновление одной записи в БД по ID"""
+    #     pass
+    #
+    # def delete(self, request, pk):
+    #     """Удаление одной записи из БД по ID"""
+    #     pass

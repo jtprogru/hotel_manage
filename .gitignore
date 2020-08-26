@@ -19,3 +19,4 @@ local_settings.py
 prod_settings.py
 src/static/
 src/media/
+src/data_generator.py
