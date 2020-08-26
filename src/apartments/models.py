@@ -47,7 +47,7 @@ class Apartment(models.Model):
                                       max_length=25,
                                       choices=APARTMENT_TYPE_CHOICES,
                                       default=AP_TYPE_STANDART)
-    description = models.CharField(verbose_name="Описание", max_length=500)
+    description = models.TextField(verbose_name="Описание")
 
     def __str__(self):
         return f'Номер: {self.name} :  Тип номера: {self.get_apartment_type()} - Статуст: {self.get_apartment_status()}'
