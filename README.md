@@ -4,7 +4,7 @@
 
 Весь основной код расположен в директории `src`. Там же размещен файл `manage.py` для управления `Django`.
 
-За основу взят template-репозиторий [django-clean-template](https://github.com/jtprog/django-clean-template).
+За основу взят template-репозиторий [django-clean-template](https://github.com/alexey-goloburdin/django-clean-template).
 
 Процедура разворачивания стандартная.
 
