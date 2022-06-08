@@ -26,5 +26,5 @@ python -m pip install -r requirements.txt
 
 Открыть в PyCharm и начать работать.
 
-Связь с автором - [Sysodminium](https://t.me/sysodminium_chat)
+Связь с автором - [@jtprogru_chat](https://ttttt.me/jtprogru_chat)
 
