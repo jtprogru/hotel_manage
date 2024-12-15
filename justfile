@@ -1,4 +1,4 @@
-set shell := ["zsh", "-cu"]
+set shell := ["/opt/homebrew/bin/zsh", "-cu"]
 
 superuser_login := 'root'
 superuser_password := 'toor'
@@ -11,6 +11,11 @@ default:
 # Install all dependencies
 install:
     poetry install --no-root
+
+# makemessages
+makemessages:
+    cd src && \
+    poetry run python manage.py makemessages --all
 
 # Create default development super user
 createsuperuser:

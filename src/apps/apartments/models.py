@@ -1,82 +1,90 @@
 from django.db import models
+from django.utils.translation import gettext as _
 
 
 class Apartment(models.Model):
     """
-    Модель номера/апартамента
-    :param int id: - Уникальный ID в рамках таблицы
-    :param int name - Имя номера (порядковый номер номера =) )
-    :param str status - Статус номер - Свободен/Занят/Забронирован/На обслуживании
-    :param float day_price - Стоимость за сутки
-    :param float night_price - Стоимость за ночь
-    :param str apartment_type - Люкс/Полу-люкс/Стандарт/Эконом/Для молодожен;
-    :param int floor - Этаж
-    :param str description - Описание номера
+    Room/apartment model
+    :param int id: - Unique ID within the table
+    :param int name - Room name (room sequence number =) )
+    :param str status - Room status - Free/Used/Reserved/Maintained
+    :param float day_price - Price per day
+    :param float night_price - Rate per night
+    :param str apartment_type - Suite/Semi-suite/Standard/Economy/Honeymoon;
+    :param int floor - Floor
+    :param str description - Room description
     """
-    AP_STATUS_FREE = 'free'
-    AP_STATUS_BUSY = 'busy'
-    AP_STATUS_BOOKING = 'booking'
-    AP_STATUS_MAINTENANCE = 'maintenance'
+
+    AP_STATUS_FREE = "free"
+    AP_STATUS_BUSY = "busy"
+    AP_STATUS_BOOKING = "booking"
+    AP_STATUS_MAINTENANCE = "maintenance"
     APARTMENT_STATUS_CHOICES = [
-        (AP_STATUS_FREE, 'Свободен'),
-        (AP_STATUS_BUSY, 'Занят'),
-        (AP_STATUS_BOOKING, 'Забронирован'),
-        (AP_STATUS_MAINTENANCE, 'На обслуживании'),
+        (AP_STATUS_FREE, _("Free")),
+        (AP_STATUS_BUSY, _("Busy")),
+        (AP_STATUS_BOOKING, _("Booking")),
+        (AP_STATUS_MAINTENANCE, _("Maintenance")),
     ]
-    AP_TYPE_LUXURY = 'luxary'
-    AP_TYPE_HALFLUXURY = 'halfluxury'
-    AP_TYPE_STANDART = 'standart'
-    AP_TYPE_ECONOMY = 'economy'
-    AP_TYPE_MARRIED = 'married'
+    AP_TYPE_LUXURY = "luxary"
+    AP_TYPE_HALFLUXURY = "halfluxury"
+    AP_TYPE_STANDART = "standart"
+    AP_TYPE_ECONOMY = "economy"
+    AP_TYPE_MARRIED = "married"
     APARTMENT_TYPE_CHOICES = [
-        (AP_TYPE_LUXURY, 'Люкс'),
-        (AP_TYPE_HALFLUXURY, 'Полу-люкс'),
-        (AP_TYPE_STANDART, 'Стандарт'),
-        (AP_TYPE_ECONOMY, 'Эконом'),
-        (AP_TYPE_MARRIED, 'Для молодожен'),
+        (AP_TYPE_LUXURY, _("Luxary")),
+        (AP_TYPE_HALFLUXURY, _("Half luxury")),
+        (AP_TYPE_STANDART, _("Standart")),
+        (AP_TYPE_ECONOMY, _("Economy")),
+        (AP_TYPE_MARRIED, _("Married")),
     ]
 
-    name = models.PositiveSmallIntegerField(verbose_name="Номер апартамента", unique=True)
-    status = models.CharField(verbose_name="Статус",
-                              max_length=25,
-                              choices=APARTMENT_STATUS_CHOICES,
-                              default=AP_STATUS_FREE)
-    day_price = models.IntegerField(verbose_name="Стоимость за сутки")
-    night_price = models.IntegerField(verbose_name="Стоимость за ночь")
-    apartment_type = models.CharField(verbose_name="Тип",
-                                      max_length=25,
-                                      choices=APARTMENT_TYPE_CHOICES,
-                                      default=AP_TYPE_STANDART)
-    description = models.TextField(verbose_name="Описание")
+    name = models.PositiveSmallIntegerField(
+        verbose_name=_("Apartment number"), unique=True
+    )
+    status = models.CharField(
+        verbose_name=_("Status"),
+        max_length=25,
+        choices=APARTMENT_STATUS_CHOICES,
+        default=AP_STATUS_FREE,
+    )
+    day_price = models.IntegerField(verbose_name=_("Cost per day"))
+    night_price = models.IntegerField(verbose_name=_("Cost per night"))
+    apartment_type = models.CharField(
+        verbose_name=_("Apartment type"),
+        max_length=25,
+        choices=APARTMENT_TYPE_CHOICES,
+        default=AP_TYPE_STANDART,
+    )
+    description = models.TextField(verbose_name=_("Description"))
 
     def __str__(self):
-        return f'Номер: {self.name} :  Тип номера: {self.get_apartment_type()} - Статуст: {self.get_apartment_status()}'
+        return _(f"Number: {self.name} :  Apartment type: {self.get_apartment_type()} - Status: {self.get_apartment_status()}")
 
     def get_apartment_type(self):
-        if self.apartment_type == 'luxary':
-            apt = 'Люкс'
-        elif self.apartment_type == 'halfluxury':
-            apt = 'Полу-люкс'
-        elif self.apartment_type == 'standart':
-            apt = 'Стандарт'
-        elif self.apartment_type == 'economy':
-            apt = 'Эконом'
+        if self.apartment_type == "luxary":
+            apt = _("Luxary")
+        elif self.apartment_type == "halfluxury":
+            apt = _("Half luxury")
+        elif self.apartment_type == "standart":
+            apt = _("Standart")
+        elif self.apartment_type == "economy":
+            apt = _("Economy")
         else:
-            apt = 'Для молодожен'
+            apt = _("Married")
         return apt
 
     def get_apartment_status(self):
-        if self.status == 'free':
-            aps = 'Свободен'
-        elif self.status == 'busy':
-            aps = 'Занят'
-        elif self.status == 'booking':
-            aps = 'Забронирован'
+        if self.status == "free":
+            aps = _("Free")
+        elif self.status == "busy":
+            aps = _("Busy")
+        elif self.status == "booking":
+            aps = _("Booking")
         else:
-            aps = 'На обслуживании'
+            aps = _("Maintenance")
         return aps
 
     class Meta:
-        verbose_name = "Апартамент"
-        verbose_name_plural = "Апартаменты"
+        verbose_name = _("Apartment")
+        verbose_name_plural = _("Apartments")
         db_table = "apartments"

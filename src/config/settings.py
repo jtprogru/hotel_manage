@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-#yk*r@xs)5_@++=4f@9uzrgt_ah^a-984z#@tbwb)*0gii4at$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "apps.apartments.apps.ApartmentsConfig",
     "apps.clients.apps.ClientsConfig",
     "apps.orders.apps.OrdersConfig",
@@ -103,13 +102,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "ru"
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'Europe/Moscow'
+LOCALE_PATHS = [
+    BASE_DIR / "locale",
+]
+
+TIME_ZONE = "Europe/Moscow"
 
 USE_I18N = True
 
