@@ -10,7 +10,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-Django = "^5.0"
+Django = "^5.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
